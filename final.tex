@@ -1,0 +1,127 @@
+\documentclass[11pt]{book}
+
+% Omitting Page Numbers
+\pagenumbering{gobble} 
+
+% Packages
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=4cm,bottom=4.9cm]{geometry}
+\renewcommand{\baselinestretch}{1.15}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{fontspec}
+\usepackage{natbib}
+\setcitestyle{square}
+\usepackage{afterpage}  % blank pages
+\usepackage{multirow}  % table
+\usepackage[table, dvipsnames]{xcolor}  % table
+\usepackage{xpatch}  % table
+\usepackage{tabu}  % table
+\usepackage{hhline}  % cell color does not overlap cell line
+\usepackage{fancyhdr}  % headers
+\usepackage{breakcites}  % references do not go though margins
+\usepackage{sectsty}  % change chapter title size
+\setcounter{tocdepth}{3}  % four level contents
+\setcounter{secnumdepth}{3}  % numbered four level contents
+\usepackage{amsfonts}  % math
+\usepackage{amsmath}  % math
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[pagebackref]{hyperref}  % references
+
+\newcommand{\rectangle}{{  % rectangle
+  \ooalign{$\sqsubset\mkern3mu$\cr$\mkern3mu\sqsupset$\cr}
+}}
+
+\newcommand\BibTeX{B{\sc ib}\TeX}
+
+% References
+\hypersetup{
+   colorlinks=true,
+   linkcolor=MidnightBlue,
+   filecolor=MidnightBlue,
+   citecolor=BrickRed,
+   urlcolor=MidnightBlue,
+   bookmarksopen=true,
+   linktocpage=true,
+   pdfpagemode=UseOutlines,
+   pdfstartpage=1
+}
+
+% Blank Page
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage}
+
+% Hide Blank Pages Numbers + Headers
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+
+% Space between numbers and text
+\geometry{footskip=2.45cm}
+
+\begin{document}
+
+\begingroup
+
+\newgeometry{left=3cm, right=3cm, top=1cm, bottom=1.2cm}
+\renewcommand{\baselinestretch}{1.9}
+
+%\include{parts/capa_provisoria}
+\include{parts/capa_definitiva}
+
+\afterpage{\blankpage}
+
+\endgroup
+
+% Preamble for Thesis
+\setmainfont{Times New Roman}
+\newgeometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=4.9cm}
+\renewcommand{\baselinestretch}{1.15}
+\pagenumbering{Roman}
+\pagestyle{plain}
+\let\cleardoublepage\clearemptydoublepage  % hide blank pages numbers + headers
+
+\include{parts/acknowledgements}
+
+\include{parts/resumo}
+
+\include{parts/abstract}
+
+\include{parts/resumo_alargado}
+
+\include{parts/contents}
+
+\include{parts/list_of_figures}
+
+\include{parts/list_of_tables}
+
+\afterpage{\blankpage}
+
+% After Introductory Pages
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\newgeometry{left=2.5cm,right=2.5cm,top=4cm,bottom=4.9cm,headsep=1cm}
+\setlength{\headheight}{14pt} 
+
+\chaptertitlefont{\Huge} % to fit chapter title to one line
+\chapternumberfont{\Huge} 
+
+\include{parts/introduction}
+
+\include{parts/related_work}
+
+\include{parts/a_silver_standard_corpus_of_phenotype_gene_relations}
+
+\include{parts/extracting_phenotype-gene_relations}
+
+\include{parts/conclusion}
+
+\pagestyle{plain}  % no more header 
+
+\include{parts/references}
+
+\end{document}
