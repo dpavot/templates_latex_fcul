@@ -1,0 +1,74 @@
+\hypertarget{4}{}
+
+\chapter{Work in Progress}
+
+\rhead{Work in Progress}
+\lhead{Chapter 4}
+
+\vspace{-1.6cm}
+
+% Gray Line
+\begingroup
+\color{gray}
+\par\noindent\rule{\textwidth}{0.4pt}
+\endgroup
+
+\noindent{Some of the early contributions and work in progress of this project are stated in the following sections in the form of abstracts. All articles are fully available in the \hyperlink{a}{Appendix} section of this work. The articles are also present in the project timeline (Figure \ref{figure:timeline}).}
+
+% ------------------------------> EARLY CONTRIBUTIONS
+
+\section{State-of-the-art Survey}
+
+This work's first contribution was a book chapter presenting the base concepts for neural networks using ontologies for RE, which corresponds to the necessary precedent steps towards the first sub-objective (Baseline System with Word2Vec) is identified in Figure \ref{figure:timeline} as \textbf{1}:
+
+\begin{itemize}
+    \item{\textbf{Book Chapter to Publish August 2020} \citep{sousa2019using} (\hyperlink{AA}{Appendix A}): \textit{Using Neural Networks for Relation Extraction from Biomedical Literature for the book Artificial Neural Networks: Methods and Applications} (Diana Sousa, Andre Lamurias, and Francisco M. Couto) in the Springer "Methods in Molecular Biology" series.}
+\end{itemize}
+
+\subsection{Abstract}
+
+Using different sources of information to support automated extracting of relations between biomedical concepts contributes to the development of our understanding of biological systems. The primary comprehensive source of these relations is biomedical literature. Several relation extraction approaches have been proposed to identify relations between concepts in biomedical literature, namely using neural networks algorithms. The use of multichannel architectures composed of multiple data representations, as in deep neural networks, is leading to state-of-the-art results. The right combination of data representations can eventually lead us to even higher evaluation scores in relation extraction tasks. Thus, biomedical ontologies play a fundamental role by providing semantic and ancestry information about an entity. The incorporation of biomedical ontologies has already been proved to enhance previous state-of-the-art results.
+
+
+\section{Baseline Deep Learning System using Multiple Biomedical Ontologies}
+
+Following the state-of-the-art survey, the next step was to develop a baseline system with Word2Vec (based on \cite{lamurias2019bo} work) and combine multiple biomedical ontologies to the system to test if there was added performance by the use of these knowledge graphs. These steps correspond to the first sub-objective of the Deep Learning objective, and the first subjective within the Semantics objective (in Figure \ref{figure:timeline} marked as \textbf{2}). The work developed for these steps resulted in a conference paper (Core A): 
+
+\begin{itemize}
+    \item{\textbf{Paper Published} \citep{sousa2020biont} (\hyperlink{AB}{Appendix B}): \textit{BiOnt: Deep Learning using Multiple Biomedical Ontologies for Relation Extraction} (Diana Sousa and Francisco M. Couto) in the European Conference on Information Retrieval.}
+\end{itemize}
+
+\subsection{Abstract}
+
+Successful biomedical relation extraction can provide evidence to researchers and clinicians about possible unknown associations between biomedical entities, advancing the current knowledge we have about those entities and their inherent mechanisms. Most biomedical relation extraction systems do not resort to external sources of knowledge, such as domain-specific ontologies. However, using deep learning methods, along with biomedical ontologies, has been recently shown to effectively advance the biomedical relation extraction field. To perform relation extraction, our deep learning system, BiOnt, employs four types of biomedical ontologies, namely, the Gene Ontology, the Human Phenotype Ontology, the Human Disease Ontology, and the Chemical Entities of Biological Interest, regarding gene-products, phenotypes, diseases, and chemical compounds, respectively. We tested our system with three data sets that represent three different types of relations of biomedical entities. BiOnt achieved, in F-score, an improvement of 4.93\% points for drug-drug interactions (DDI corpus), 4.99\% points for phenotype-gene relations (PGR corpus), and 2.21\% points for chemical-induced disease relations (BC5CDR corpus), relatively to the state-of-the-art. The code supporting this system is available at \url{https://github.com/lasigeBioTM/BiOnt}. 
+
+
+\section{PGR Improvement}
+
+The next two early contributions refer to the first sub-objective (PGR Improvement) within the Biomedical objective (in Figure \ref{figure:timeline} marked as \textbf{3} and \textbf{4}). The first reflects the first steps toward identifying negative relations where there is a mention of no relation between two entities using the PGR dataset \citep{sousa2019silver}. The second contribution presents the work done regarding using the PGR dataset along with MTurk crowdsourcing services for dataset improvement. 
+
+\subsection{Focusing on Negative Biomedical Relations}
+
+This work was developed during the 6th Biomedical Linked Annotation Hackathon (BLAH6) and resulted in one journal publication:
+
+\begin{itemize}
+    \item{\textbf{Paper Published} \citep{sousa2020improving} (\hyperlink{AC}{Appendix C}): \textit{Improving Accessibility and Distinction between Negative Results in Biomedical Relation Extraction} (Diana Sousa, Andre Lamurias, and Francisco M. Couto) in Genomics \& Informatics.}
+\end{itemize}
+
+\subsubsection{Abstract}
+
+Accessible negative results are relevant for researchers and clinicians not only to limit their search space but also to prevent the costly re-exploration of research hypotheses. However, most biomedical relation extraction datasets do not seek to distinguish between a false and a negative relation among two biomedical entities. Furthermore, datasets created using distant supervision techniques also have some false negative relations that constitute undocumented/unknown relations (missing from a knowledge base). We propose to improve the distinction between these concepts, by revising a subset of the relations marked as false on the phenotype-gene relations corpus and give the first steps to automatically distinguish between the false (F), negative (N), and unknown (U) results. Our work resulted in a sample of 127 manually annotated FNU relations and a weighted-F1 of 0.5609 for their automatic distinction. This work was developed during the 6th Biomedical Linked Annotation Hackathon (BLAH6).
+
+
+\subsection{Alling Distant Supervison to Crowdsourcing}
+
+The work developed for this step resulted in one journal submission:
+
+\begin{itemize}
+    \item{\textbf{Paper Submitted} (\hyperlink{AD}{Appendix D}): \textit{A Hybrid Approach towards Biomedical Relation Extraction Training Corpora: Combining Distant Supervision with Crowdsourcing} (Diana Sousa, Andre Lamurias, and Francisco M. Couto).}
+\end{itemize}
+
+\subsubsection{Abstract}
+
+Biomedical Relation Extraction (RE) datasets are vital in the construction of knowledge bases, and to potentiate the discovery of new interactions. There are several ways to create biomedical RE datasets, some more reliable than others, such as resorting to domain expert annotations. However, the emerging use of crowdsourcing platforms, such as Amazon Mechanical Turk (MTurk), can potentially reduce the cost of RE dataset construction, even if the same level of quality cannot be guaranteed. There is a lack of power of the researcher to control who, how, and in what context workers engage in crowdsourcing platforms. Hence, allying distant supervision with crowdsourcing can be a more reliable alternative. The crowdsourcing workers would be asked only to rectify or discard already existing annotations, which would make the process less dependent on their ability to interpret complex biomedical sentences. In this work, we use a previously created distantly supervised dataset of human phenotype-gene relations (PGR dataset) to perform crowdsourcing validation. We divided the original dataset into two annotation tasks: Task 1, 70\% of the dataset annotated by one worker, and Task 2, 30\% of the dataset annotated by seven workers. Also, for Task 2, we added an extra rater on-site and a domain expert, to further assess the crowdsourcing validation quality. Here, we describe a detailed pipeline for RE crowdsourcing validation, creating a new release of the PGR dataset with partial domain expert revision, and assess the quality of the MTurk platform. We applied the new dataset to two state-of-the-art deep learning systems (BiOnt and BioBERT) and compared its performance with the original PGR dataset, as well as combinations between the two, achieving 0.3494 average increase in F-measure. The code supporting our work and the new release of the PGR dataset will be made publicly available upon acceptance of this manuscript.
+

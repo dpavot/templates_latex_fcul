@@ -1,0 +1,30 @@
+\hypertarget{5}{}
+
+\chapter{Conclusion}
+
+\rhead{Conclusion}
+\lhead{Chapter 5}
+
+\vspace{-1.6cm}
+
+% Gray Line
+\begingroup
+\color{gray}
+\par\noindent\rule{\textwidth}{0.4pt}
+\endgroup
+
+\noindent{The main way we communicate scientific knowledge is through scientific literature. At the current rate of document growth, the only way to process this amount of information is by using computational methods. The information obtained through these methods can lead to a better understanding of multiple domains. Automatic Relation Extraction (RE) still has a long way to go to achieve human-level performance scores, especially in the biomedical field. Over recent years, some innovative systems have successively achieved better results by making use of multiple knowledge sources and data representations. These systems not only rely on the training data but make use of different language and entity-related features, to create models that identify relations in highly heterogeneous text. This work will produce a deep learning RE system that makes use of multichannel architectures and is composed of multiple features. The system will integrate different features distinctively. An optimal combination of features and the ideal features to perform RE tasks are the way to reach human-level performance.}
+
+This thesis is divided into three main goals, which reflect the creation of a state-of-the-art deep learning RE system using semantics for the biomedical domain. The first steps towards the ultimate goal were already accomplished:
+
+\begin{itemize}
+    \item Creating a baseline system with Word2Vec (based on the BO-LSTM system);
+    \item Implementing the use of ontologies within that system;
+    \item Improving the PGR dataset that is one of the case studies.
+\end{itemize}
+ 
+The remaining work to fulfill the thesis goals is to use higher performance word embeddings, primarily focused on scientific literature (Objective 1). Also, apply graph attention mechanisms to biomedical knowledge graphs and test the use of semantic similarity measures (Objective 2). Finally, create a cancer-nutrition interaction dataset regarding the second case study, and test the system's adaption for non-English languages (Objective 3). 
+
+There is a growing need for more domain-specific corpora and in different languages to accompany the growth of systems targeting different relations, which can only be accomplished by automated corpus creation (silver standard corpora). Integrating different knowledge sources, based on semantics, instead of relying solely on the training data for creating classification models will allow us not only to find relevant information for a particular problem quicker, but also to validate the results of recent research, and propose new experimental hypotheses.
+
+This thesis's early contributions were three publications, including a book chapter about neural networks, a conference paper describing the integration of multiple ontologies into a deep learning system, and a journal paper describing improving accessibility and distinction between negative results in biomedical RE using the PGR dataset. Also, a journal submission was made on an approach to create biomedical training corpora using distant supervision and crowdsourcing, using the PGR dataset.
