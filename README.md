@@ -1,6 +1,6 @@
 # TEMPLATES LATEX FCUL
 
-Add files (tese_mestrado_2019, proposta_tese_mestrado_2019, proposta_tese_doutoramento_2020, or tese_doutoramento_2023) to create a new Overleaf project for optimal performance.
+Add files (tese_mestrado_2019, proposta_tese_mestrado_2019, tese_doutoramento_2023, or proposta_tese_doutoramento_2020) to create a new Overleaf project for optimal performance.
 
 ## Mestrado
 
@@ -12,6 +12,7 @@ Tese disponível no [Repositório da Universidade de Lisboa](http://hdl.handle.n
 
 ## Doutoramento
 
+* Template LaTeX para Tese de Doutoramento na FCUL (**ATENÇÃO**: o compilador é XeLaTeX, o TEX Live Version 2022)
+  
 * Template LaTeX para Proposta de Tese de Doutoramento na FCUL (**ATENÇÃO**: o compilador é XeLaTeX, o TEX Live Version 2019)
 
-* Template LaTeX para Tese de Doutoramento na FCUL (**ATENÇÃO**: o compilador é XeLaTeX, o TEX Live Version 2022)
