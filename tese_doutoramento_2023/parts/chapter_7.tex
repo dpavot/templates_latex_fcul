@@ -1,0 +1,103 @@
+\hypertarget{7}{}
+
+\rhead{Real-Word Assessments}
+\lhead{Chapter 7}
+
+\chapter[Real-Word Assessments]
+{\huge Real-Word Assessments} % \\
+% \Large \textmd{Diana Sousa, Andre Lamurias, and Francisco M. Couto}}
+
+\vspace{-1.6cm}
+
+% Gray Line
+\begingroup
+\color{black}
+\par\noindent\rule{\textwidth}{0.4pt}
+\endgroup
+
+\noindent{This chapter compiles all other research work conducted throughout this thesis by dividing each contribution into a section summarising its motivation and the work developed. This work includes solo and group participation in workshops, challenges, a doctoral consortium, and other adjacent journal contributions, all corresponding to real-world assessments of the systems and approaches developed in this thesis.} 
+
+\section{Improving Accessibility and Distinction Between Negative Results in Biomedical Relation Extraction}
+
+Every year, researchers organise the Biomedical Linked Annotation Hackathon (BLAH) series to promote interoperability among text mining resources and their efficient use or reuse, particularly in the mix with others. In 2020, BLAH6 addressed issues regarding biomedical literature and social media mining \citep{kim2020editor}. 
+
+This thesis participation in BLAH6 targeted the improvement of accessibility and distinction between negative results in biomedical Relation Extraction (RE). Accessible negative results are relevant for researchers and clinicians to limit their search space and prevent the costly re-exploration of research hypotheses. However, most biomedical RE datasets do not seek to distinguish between a false and a negative relation between two biomedical entities. Furthermore, datasets created using distant supervision techniques also have false negative relations constituting undocumented/unknown relations (missing from a knowledge base). We proposed to improve the distinction between these concepts by revising a subset of the relations marked as false on the phenotype-gene relations corpus and giving the first steps to automatically distinguish between the false (F), negative (N), and unknown (U) results. The work resulted in a sample of 127 manually annotated FNU relations and a weighted F-measure of 0.5609 for their automatic distinction. The full application note is available at \hyperlink{AC}{Appendix C}:
+
+\begin{itemize}[label=]
+  \item \textbf{Sousa, D.}, Lamurias, A., and Couto, F. M. (2020). \textbf{Improving Accessibility and Distinction Between Negative Results in Biomedical Relation Extraction}. Genomics \& Informatics, 18(2):1-4. \citep{sousa2020improving} \footnote{\url{https://github.com/lasigeBioTM/blah6}}
+\end{itemize}
+
+
+\section{Generating Biomedical Question Answering Corpora From Q\&A Forums}
+
+As presented in Chapter 2, Question Answering (QA) is a natural language processing task that aims at obtaining relevant answers to user questions. In 2020, while some progress had been made in this area, biomedical questions were still a challenge to most QA approaches due to the complexity of the domain and the limited availability of training sets. 
+
+Thus, we presented a method to automatically extract question-article pairs from Q\&A web forums, which could be used for document retrieval, a crucial step of most QA systems. The proposed framework extracts from selected forums the questions and the respective answers that contain citations. This way, QA systems based on document retrieval can be developed and evaluated using the question-article pairs annotated by users of these forums. We generated the BiQA corpus by applying our framework to three forums, obtaining 7,453 questions and 14,239 question-article pairs. We evaluated how the number of articles associated with each question and the number of votes on each answer affect the performance of baseline document retrieval approaches. Also, we demonstrated that the articles given as answers are significantly similar to the questions and trained a state-of-the-art deep learning model that performed similarly to using a dataset manually annotated by experts. The proposed framework can be used to update the BiQA corpus from the same forums as new posts are made and from other forums that support their answers with documents. The full journal article is available at \hyperlink{AD}{Appendix D}:
+
+\begin{itemize}[label=]
+    \item{Lamurias, A., \textbf{Sousa, D.}, and Couto, F. M. (2020). \textbf{Generating Biomedical Question Answering Corpora From Q\&A Forums}. IEEE Access, 8:161042–161051. (Q1 Scimago) \citep{lamurias2020generating}} \footnote{\url{https://github.com/lasigeBioTM/BiQA}}
+\end{itemize}
+
+\section{COVID-19: A Semantic-Based Pipeline for Recommending Biomedical Entities}
+
+During the research work developed in this thesis, an unprecedented global pandemic emerged due to the widespread coronavirus SARS-CoV-2. This pandemic had a dramatic impact worldwide, leading scientists in all different domains to step up to positively influence the outbreak's outcome.   
+
+Accordingly, the \ac{ACL} community in April 2020 decided to take action. Given the vast quantities of unstructured text being written at the time, relevant information was becoming increasingly hard to uncover. Hundreds of articles were written daily on coronavirus, and the general public interest and response resulted in millions of social media posts. Both were valuable sources of information to understand and support the best clinical management of the disease. Automating the organization and identification of this information was critical \citep{nlp-covid19-2020-nlp}. Thus, researchers decided to create the 1\textsuperscript{st} Workshop on Natural Language Processing (NLP) for COVID-19, an ever-encompassing workshop, with many submissions supported by resources such as the CORD-19 dataset created by the Allen Institute for \acl{AI} \citep{wang-etal-2020-cord}, a resource of scientific papers on COVID-19 and related historical coronavirus research.
+
+Our submission had the goal of recommending biomedical entities to scientific researchers  \citep{barros2020covid}. For instance, to recommend new chemical compounds to researchers with similar interests to peers working on those compounds. To this end, we used the CORD-19 dataset, performed Named-Entity Recognition (NER) to identify/extract biomedical entities, then RE to further our knowledge about the interconnections of those entities, and finally, Recommendation taking into account research articles authors' and their biomedical entities of interest. Results showed a precision@k of 80\%, demonstrating this pipeline's potential to uncover information on the vast amounts of data created up until then. The full workshop article is available at \hyperlink{AE}{Appendix E}:
+
+\begin{itemize}[label=]
+    \item{Barros, M., Lamurias, A., \textbf{Sousa, D.}, Ruas, P., and Couto, F. M. (2020). \textbf{COVID-19: A Semantic-Based Pipeline for Recommending Biomedical Entities}. In Proceedings of the 1\textsuperscript{st} Workshop on NLP for COVID-19 (Part 2) at EMNLP 2020, pages 1–9, Online. Association for Computational Linguistics. (Core A) \citep{barros2020covid}} \footnote{\url{https://github.com/lasigeBioTM/knowledge-extraction-from-CORD-19}}
+\end{itemize}
+
+\section{lasigeBioTM at BioCreative VII Track 1: Text Mining Drug and Chemical - Protein Interactions using Biomedical Ontologies}
+
+Community challenges are often organized, targeting biomedical NLP and text mining.
+BioCreative was first organized in 2004, and it consisted of identifying gene mentions and Gene Ontology (GO) terms in articles and gene name normalization \citep{hirschman2005overview}. Since then, seven more editions of this challenge have been organized with various tasks. In 2021, the BioCreative VII Track 1 aimed to promote the development and evaluation of systems that can automatically detect relations between chemical compounds/drugs and genes/proteins.
+
+Identifying biomedical relations is necessary to advance our understanding of biological processes and is particularly relevant for applications in precision medicine. In the BioCreative VII Track 1, our team, lasigeBioTM, had as its primary goal the extraction and classification of drug and chemical-protein interactions. Our team adapted an existing neural network system, BiOnt, incorporating external knowledge from biomedical ontologies. To perform Track 1, we used the GO and the Chemical Entities of Biological Interest (ChEBI) ontology. We submitted different runs considering the use of features such as class weights and post-processing rules. However, due to time constraints, we could only make some of the initial planned improvements, and our results were below the mean performance of the participating teams. Still, we took the first steps towards this adaption, and we can now continue improving this system to reach state-of-the-art performance. Nonetheless, this work was chosen for presentation due to the approach's originality. The full challenge article is available at \hyperlink{AF}{Appendix F}:
+
+\begin{itemize}[label=]
+    \item{\textbf{Sousa, D.}, Cassanheira, R., and Couto, F. M. (2021). \textbf{lasigeBioTM at BioCreative VII Track 1: Text Mining Drug and Chemical-Protein Interactions Using Biomedical Ontologies}. In Proceedings of the BioCreative VII Challenge Evaluation Workshop, pages 1–4, Online. Association for Computational Linguistics. \citep{sousalasigebiotm}} \footnote{\url{https://github.com/lasigeBioTM/biocreativeVII}}
+\end{itemize}
+
+\section{Deep Learning System for Biomedical Relation Extraction Combining External Sources of Knowledge}
+
+Doctoral Consortiums are events where PhD students are expected to present their ongoing and future research. In 2021, the European Conference on Informational Retrieval (ECIR) made a call for Doctoral Consortium papers targeting second-year PhD students where accepted students would have the opportunity to be matched with a specialized mentor to advance their research work further. The proposal for the doctoral work detailed in this thesis was presented and discussed. The full Doctoral Consortium paper is available at \hyperlink{AG}{Appendix G}:
+
+\begin{itemize}[label=]
+    \item{\textbf{Sousa, D.} (2021). \textbf{Deep Learning System for Biomedical Relation Extraction Combining External Sources of Knowledge}. In Advances in Information Retrieval: 43\textsuperscript{rd} European Conference on IR Research, pages 688–693, Berlin, Heidelberg. Springer. (Core A) \citep{sousa2021deep}}
+\end{itemize}
+
+\section{COVID-19 Recommender System Based on an Annotated Multilingual Corpus}
+
+In 2021, we once again participated in the BLAH series. The BLAH7 edition aimed at finding NLP-based solutions to tackle the COVID-19 pandemic \citep{kim2021editor}.
+
+Tracking the most recent advances in Coronavirus disease 2019 (COVID-19)-related research was essential, given the disease's novelty and its impact on society. However, with the publication pace speeding up, researchers and clinicians required automatic approaches to keep up with the incoming information regarding the disease. A solution to this problem required the development of text mining pipelines, the efficiency of which strongly depends on the availability of curated corpora. However, there was a lack of COVID-19-related corpora, even more if considering other languages besides English. This project's main contribution was the annotation of a multilingual parallel corpus and the generation of a recommendation dataset (EN-PT and EN-ES) regarding relevant entities, their relations, and recommendation, providing this resource to the community to improve the text mining research on COVID-19-related literature. The full journal article is available at \hyperlink{AH}{Appendix H}:
+
+\begin{itemize}[label=]
+    \item{Barros, M.\footnote[*]{Authors contributed equally to this research}, Ruas, P.\textsuperscript{*}, \textbf{Sousa, D.}\textsuperscript{*}, Bangash, A. H., and Couto, F. M. (2021). \textbf{COVID-19 Recommender System Based on an Annotated Multilingual Corpus}. Genomics \& Informatics, 19(3):1-7. \citep{barros2021covid}} \footnote{\url{https://github.com/lasigeBioTM/blah7}}
+\end{itemize} 
+
+\section{lasigeBioTM at SemEval-2023 Task 7: Improving Natural Language Inference Baseline Systems with Domain Ontologies}
+
+One community challenge that often targets the biomedical domain is SemEval. SemEval-2023 Task 7 – Multi-Evidence Natural Language Inference for Clinical Trial Data (NLI4CT) was based on the NLI4CT dataset, which contains two tasks on breast cancer Clinical Trials Reports (CTRs) \citep{jullien-2023-nli4ct}. Firstly, to determine the inference relation between a natural language statement and a CTR. Secondly, to retrieve supporting facts from the CTR(s) to justify the predicted relation.
+
+CTRs contain highly valuable health information from which Natural Language Inference (NLI) techniques determine if a given hypothesis can be inferred from a given premise. CTRs are abundant with domain terminology with particular terms that are difficult to understand without prior knowledge. Thus, we proposed to use domain ontologies as a source of external knowledge that could help
+with the inference process in the SemEval-2023  Task 7 (NLI4CT). Our approach targeting subtask 1: Textual Entailment, resorted to Ontologies, NLP techniques, such as tokenization and named-entity recognition, and rule-based approaches. We could show that inputting annotations from domain ontologies improved the baseline systems. The full challenge article is available at \hyperlink{AI}{Appendix I}:
+
+\begin{itemize}[label=]
+    \item{Conceição S. I. R., \textbf{Sousa, D. F.}, Silvestre, P. M., and Couto, F. M. (2023). \textbf{lasigeBioTM at SemEval-2023 Task 7: Improving Natural Language Inference Baseline Systems with Domain Ontologies}. (Accepted)} \footnote{\url{https://github.com/lasigeBioTM/SemEval2023_Task-7}}
+\end{itemize}
+
+\section{LASIGE and UNICAGE Solution to the NASA LitCoin NLP Competition}
+
+The 2022 LitCoin NLP Challenge was a part of the NASA Tournament Lab, hosted by the National Center for Advancing Translational Sciences (NCATS) and the National Library of Medicine (NLM). The competition aimed to create a data-driven technological solution that leverages the vast volumes of biomedical publications published daily to advance the biomedical field by increasing discoverability and formulating new research hypotheses. Specifically, the goal was to extract scientific concepts from scientific articles (Part 1), connect them by generating knowledge assertions, and label them as novel findings or background information (Part 2). 
+
+Biomedical NLP tends to become cumbersome for most researchers, frequently due to the amount and heterogeneity of text to be processed. To address this challenge, the industry is continuously developing highly efficient tools and creating more flexible engineering solutions. Our work presented the integration between industry data engineering solutions for efficient data processing and academic systems developed for Named Entity Recognition (LasigeUnicage\_NER) and Relation Extraction (BiOnt). Our design reflects an integration of those components with external knowledge in the form of additional training data from other datasets and biomedical ontologies. We used this pipeline in the 2022 LitCoin NLP Challenge, where our team LasigeUnicage was awarded the 7\textsuperscript{th} Prize out of approximately 200 participating teams, reflecting a successful collaboration between the academia (LASIGE) and the industry (Unicage). The full article is available at \hyperlink{AJ}{Appendix J}:
+
+\begin{itemize}[label=]
+    \item{Ruas, P.\footnote[†]{Authors contributed equally to this research}, \textbf{Sousa, D. F.}\textsuperscript{†}, Neves, A.\textsuperscript{†}, Cruz, C., and Couto, F. M. (2023). \textbf{LASIGE and UNICAGE Solution to the NASA LitCoin NLP Competition}. (Submitted)} \footnote{\url{https://github.com/lasigeBioTM/Litcoin-Lasige_Unicage}}
+\end{itemize}
+
+

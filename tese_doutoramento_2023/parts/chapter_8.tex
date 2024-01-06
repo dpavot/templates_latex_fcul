@@ -1,0 +1,50 @@
+\hypertarget{8}{}
+
+\rhead{General Discussion and Conclusions}
+\lhead{Chapter 8}
+
+\chapter[General Discussion and Conclusions]
+{\huge General Discussion and Conclusions}
+
+\vspace{-1.6cm}
+
+% Gray Line
+\begingroup
+\color{black}
+\par\noindent\rule{\textwidth}{0.4pt}
+\endgroup
+
+\noindent{In the foreseeable future, the amount of written literature available online in an unstructured or semi-structured way will continue to grow. With this growth in the number of written resources, the necessity for developing automated methods to process it becomes increasingly more relevant. Lately, even the non-scientific community has become aware of the problem and possibilities through the emergence of accessible generative models (i.e., GPT derivatives). However, even with the advances made until the writing of this thesis on automated data retrieval and generation, the problem of biomedical Relation Extraction (RE) still needs to be addressed on several fronts, given the lack of liability, expertise, and explainability of these approaches.}
+
+Biomedical data is complex and has yet to be fully understood or captured by traditional Large Language Models (LLM). We can find biomedical relations in various scientific sources and several languages. However, the amount of written resources prevents researchers and clinicians from knowing or inferring all possible associations and dissociations, leading to experimental repetition. 
+
+In this manuscript, the main body of work tackles the integration of external knowledge into biomedical RE systems, making them predecessors of what we more recently defined as multimodal systems that integrate more than one data format/source. Beyond integrating knowledge, this thesis explores new ways of creating biomedical RE datasets and, through workshops and challenges, different biomedical applications of the principals reported in the main body of work. The following sections summarise the main thesis contributions and future work in biomedical RE. 
+
+\section{Summary of Contributions}
+
+This section provides an overview of the contributions regarding each of the objectives defined in the introductory chapter: Deep Learning with External Knowledge and Evaluation.
+
+This thesis first presents three deep learning systems with external knowledge injection (Objective 1). These are BiOnt (Chapter 3), K-BiOnt (Chapter 4), and K-RET (Chapter 5).
+
+BiOnt is a BiLSTM-based system with two annotation layers that learn different information about the entities in candidate relations. The system annotations layers' are employed using four types of biomedical ontologies, namely, the \acl{GO} (GO), the \acl{HPO} (HPO), the \acl{DO} (DO), and the \acl{ChEBI} (ChEBI), regarding gene products, phenotypes, diseases, and chemical compounds, respectively. The two annotation layers represent the concatenation of ontological ancestors of the entities in the candidate relation and the common ancestors between those entities when considering relations between the same type of entities. BiOnt surpassed the previous state-of-the-art in the three datasets used for evaluation. 
+
+Following BiOnt, to test other possibilities of knowledge injection and benefit of the ideas of other fields, K-BiOnt employed the principals of \acl{KG} (KG)-based recommendation. K-BiOnt used multiple biomedical \ac{KG} to add features to the entities in a candidate relation. The deep learning system combined BiOnt and a \ac{KG}-based recommendation system. The concepts of item and user were used to describe the entities in a candidate relation and Ontological KGs to add information (i.e., features) to each item, meaning only entities covered by KGs entries had features. Results showed that allying the two approaches can help detect more rare/underexpressed relations. 
+
+Finally, given the widespread use of BERT, K-RET was developed using BERT as a pre-training model and fine-tuned to include knowledge directly in the training data text. K-RET allows injecting knowledge only to the entities in the candidate relation, to additional contextual entities of interest, using multiple knowledge sources, and to multi-token entities. K-RET significantly outperformed baseline BERT systems' performance, particularly in detecting drug-drug interactions. 
+
+This thesis demonstrated that one could use state-of-the-art deep learning techniques with added external knowledge as complementary data to create effective and reproducible biomedical RE systems that beat the previous state-of-the-art performance when validated on gold standard datasets, accomplishing the first objective. 
+
+After the three systems summarized above, in Chapter 6, this work presents an approach to creating new biomedical RE datasets (Objective 2). 
+
+The approach explores the application of distant supervision techniques to retrieve candidate relations from unstructured text and their validation through different techniques, such as a crowdsourcing platform with pre-defined settings. Results demonstrated the benefit of having even non-experts revise a human phenotype-gene relations dataset using state-of-the-art systems for comparison. 
+
+This work successfully created a pipeline to construct more reliable and less expensive RE datasets by employing distant supervision allied with crowdsourcing, validating the second objective. 
+
+Other explorations of biomedical data and real-world assessments of the approaches and systems developed in this work are reported in Chapter 7 and include considering negative relations, their accessibility and distinction, using biomedical \acl{NLP} (NLP) techniques to create a \acl{QA} (QA) dataset from Q\&A forums on biomedical sciences, and using COVID-19-related literature recommendations in a multilingual environment. 
+
+\section{Future Work}
+
+While recent advances in biomedical RE are exciting and open new opportunities for data exploration and comprehension, the emergence of deep learning methods catapulted the necessity for explainability. The lack of explainability of deep learning models makes it hard to trust predictions, specifically when these target the highly complex biomedical domain. The injection of knowledge into deep learning systems can contribute to more explainable predictions as presented throughout this thesis. However, we can still not fully follow the path from input to prediction when dealing with deep learning. The path forward passes by not only explaining or justifying predictions but also defining what degree of explainability is adequate and necessary for each end-user.
+
+Further, ethical Artificial Intelligence (AI) is a field that aims that AI systems go towards greater ecological integrity and social justice. A study by \cite{strubell2019energy} illustrated that training a single deep learning NLP model can lead to approximately 600,000 lb of carbon
+dioxide emissions, which can be addressed by the development of minimal resources models. Reproducibility is also an ongoing issue in the field, given that there are systems whose code is not shared. Frequently, authors justify this choice through privacy claims. However, there should always be a way to at least partially replicate the system that could be guaranteed by the venues that accept those types of publications. All community members continued sharing and discussing of open-sourced systems contribute to significant advances in the field. These and other concerns, such as biased datasets and taking into account $n$-ary relations (i.e., more than two entities), should be addressed and made a priority by the groups working on biomedical text mining.

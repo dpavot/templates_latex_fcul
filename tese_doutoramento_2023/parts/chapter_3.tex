@@ -1,0 +1,104 @@
+\hypertarget{3}{}
+
+\rhead{BiOnt: Deep Learning Using Multiple Biomedical Ontologies for Relation Extraction}
+\lhead{Chapter 3}
+
+\chapter[BiOnt: Deep Learning Using Multiple Biomedical Ontologies for Relation Extraction]
+{\huge BiOnt: Deep Learning Using Multiple Biomedical Ontologies for Relation Extraction \\
+\Large \textmd{Diana Sousa and Francisco M. Couto}}
+
+\vspace{-1.6cm}
+
+% Gray Line
+\begingroup
+\color{black}
+\par\noindent\rule{\textwidth}{0.4pt}
+\endgroup
+
+\noindent{This chapter tackles Objective 1 by showcasing the integration of biomedical ontologies into a BiLSTM \acl{RE} (RE) model and corresponds to the conference paper:} 
+
+\begin{itemize}[label=]
+    \item{\textbf{Sousa, D.} and Couto, F. M. (2020). \textbf{BiOnt: Deep Learning Using Multiple Biomedical Ontologies for Relation Extraction}. In Advances in Information Retrieval: 42\textsuperscript{nd} European Conference on IR Research, pages 367–374, Lisbon, Portugal. Springer. (Core A) \citep{sousa2020biont}} 
+\end{itemize}
+
+\textbf{Abstract.} Successful biomedical relation extraction can provide evidence to researchers and clinicians about possible unknown associations between biomedical entities, advancing the current knowledge we have about those entities and their inherent mechanisms. Most biomedical relation extraction systems do not resort to external sources of knowledge, such as domain-specific ontologies. However, using deep learning methods, along with biomedical ontologies, has been recently shown to effectively advance the biomedical relation extraction field. To perform relation extraction, our deep learning system, BiOnt, employs four types of biomedical ontologies, namely, the \acl{GO} (GO), the \acl{HPO} (HPO), the \acl{DO} (DO), and the \acl{ChEBI} (ChEBI), regarding gene products, phenotypes, diseases, and chemical compounds, respectively. We tested our system with three datasets that represent three different types of relations of biomedical entities. BiOnt achieved, in F-measure, an improvement of 4.93 percentage points for drug-drug interactions (\acs{DDI} Corpus), 4.99 percentage points for phenotype-gene relations (\acs{PGR} Corpus), and 2.21 percentage points for chemical-induced disease relations (\acs{BC5CDR} Corpus), relatively to the state-of-the-art. The code supporting this system is available at \url{https://github.com/lasigeBioTM/BiOnt}.
+
+\section{Introduction}
+
+The description of the mechanisms that are responsible for the behaviour of biological systems is non-trivial, and each step towards the understanding of those mechanisms often constitutes a scientific achievement \citep{YU2006252,BECHTEL2007269}. Typical examples describe diseases that are associated with mechanisms that originate phenotypic abnormalities as a result of modified gene expression, as well as the action of drugs on those diseases \citep{Campaner2011}, among others. One significant step to fully understanding biological systems mechanisms is to extract and classify the relations that exist between the different biomedical entities, namely chemicals, diseases, genes, and phenotypes. In literature, authors classify this problem as a \acl{RE} (RE) task. Biomedical \ac{RE} aims to extract and classify relations between biomedical entities in highly heterogeneous or unstructured scientific or clinical text.
+
+Deep learning is widely used to solve problems such as speech recognition, visual object recognition, and object detection. Lately, deep learning based-systems have started to tackle \ac{RE} problems. These systems are becoming increasingly more complex, namely the MIMLCNN \citep{jiang2016relation} and PCNN + Att \citep{lin2016neural} systems, that mark recent turning points in the deep learning \ac{RE} field. Both of these systems use Word2Vec \citep{mikolov2013distributed} that aims to capture the syntactic and semantic information about the word \citep{kumar2017survey}. However, deep learning methods that effectively extract and classify relations between biomedical entities in the text are still scarce \citep{li2017neural,lamurias2019bo}. 
+
+Ontologies play an important role in biomedical research through a variety of applications and are used primarily as a source of vocabulary for standardization and integration purposes \citep{Bodenreider08biomedicalontologies}. Word embeddings can learn how to detect relations between entities but manifest difficulties in grasping the semantics of each entity and its specific domain. Domain-specific ontologies provide and formalize this knowledge. Thus, a structured representation of the semantics between entities and their relations, an ontology, allows us to use it as an added feature to a machine learning classifier. Some of the biomedical entities structured in publicly available ontologies are genes properties/attributes (\ac{GO}) (45003 terms) \citep{ashburner2000gene,gene2019gene}, phenotypes (\ac{HPO}) (25810 terms) \citep{kohler2017human}, diseases (\ac{DO}) (18114 terms) \citep{10.1093/nar/gky1032}, and drugs/chemicals (\ac{ChEBI}) (133104 terms) \citep{hastings2016chebi}\footnote{term counts at \textit{09/09/2019}}.  
+
+This work presents the BiOnt system, a biomedical \ac{RE} system built using bidirectional \acl{LSTM} (LSTM) networks. The BiOnt system incorporates the state-of-the-art Word2Vec word embeddings \citep{mikolov2013distributed} and makes use of different combinations of input channels to maximize performance. Our system is based on the work of \cite{lamurias2019bo} and \cite{xu2018leveraging}. Both of these models make use of biomedical resources as embedding layers for their respective systems. \cite{lamurias2019bo} uses the \cite{xu2018leveraging} model as a baseline with an added ontological embedding layer (BO-LSTM model). However, the BO-LSTM model is limited to two types of relations, namely, drug-drug and gene-phenotype relations.
+
+External sources of knowledge, such as biomedical ontologies, can provide highly valuable information for the detection of relations between entities in the text, as described previously by \cite{lamurias2019bo}. These knowledge bases provide not only relevant characteristics about the respective entities but also about the underlying semantics of the relations they establish. This information is not expressed directly in the training data but usually reinforces a relation between two entities in the text. The novelty of our system is that it expands the previous work done by \cite{lamurias2019bo} by using four types of domain-specific ontologies and combines them to extract new types of relations, along with word embeddings \citep{mikolov2013distributed} and WordNet hypernyms \citep{ciaramita2006broad}. BiOnt successfully replicates the results of the BO-LSTM application using different types of ontologies. Our system can extract new relations between four biomedical entities, namely, genes, phenotypes, diseases, and chemicals. Figure \ref{fig31} shows how these four types of biomedical ontologies can be combined to aid the relation extraction of ten different combinations of biomedical entities. The BiOnt system also explores the use of entities that are not direct entries in an ontology (e.g., genes), linking each entity to its most informative annotation concept within a corresponding ontology (e.g., GO). Our method incorporates more ontologies than the previously mentioned systems and is evaluated using three state-of-the-art datasets. The BiOnt system can be used to effectively populate knowledge bases regarding gold standard relations. Ultimately, it can be used to explore new experimental hypotheses providing evidence to researchers and clinicians about possible unknown associations between biomedical entities.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{images/chapter_3/ecir_2020_1.pdf}
+\caption[Ten Possible Combinations Between Four Biomedical Ontologies]{The ten possible combinations between the four biomedical ontologies (\ac{GO} \citep{ashburner2000gene}, \ac{HPO} \citep{kohler2017human}, \ac{DO} \citep{10.1093/nar/gky1032}, and \ac{ChEBI} \citep{hastings2016chebi}). The \textbf{1} represents the \acs{DDI} Corpus, the \textbf{2} the \acs{PGR} Corpus, and the \textbf{3} the \acs{BC5CDR} Corpus (described in Section 3).} \label{fig31}
+\end{figure}
+
+
+\section{Methodology}
+
+This section describes the BiOnt model with an emphasis on the enhancements done to the BO-LSTM \cite{lamurias2019bo} model to allow multi-ontology integration, expanding the number of different type candidate pairs from two to ten. The BiOnt model uses a combination of different language and entity-related data representations that feed individual channels creating a multichannel architecture. The input data is used to generate instances to be classified by the model. Each instance corresponds to a candidate pair of entities in a sentence. To each instance, the model assigns a positive or negative class. A positive class corresponds to an identified relation between two biomedical concepts, where the nature of this relation depends on the dataset being used to perform the evaluation, and a negative class implies no relation between the different entities. 
+
+An instance should condense all relevant information to classify a candidate pair. To create an instance, the BiOnt model relies on three primary data information layers. After sentence tokenization, these layers are Shortest Dependency Path (SDP) \citep{Pyysalo:2013b,mikolov2013distributed}, WordNet Classes \citep{ciaramita2006broad}, and Ontology Embeddings. The latter represents the relations between the ancestors for each ontology concept corresponding to an entity (Figure \ref{fig6}). The model assumes that the input data already has the offsets of the relevant entities identified and their respective concept ID, the Named-Entity Recognition and Linking tasks. However, while most entities already correspond to an ontology concept ID, some entities, such as genes, do not have a direct entry into an ontology. BiOnt matches these entities to their most representative concept in the \acl{GO} \citep{ashburner2000gene}. To match the gene to their most representative GO term, the priority was given to concepts inferred from experiments, for having a more sustained background and usually being more descriptive. For tie-breaking, if we have several GO terms inferred from experiments, the choice is the term that is the most specific (i.e., with the longer ancestry line).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{images/chapter_3/ecir_2020_6.pdf}
+\caption[BiOnt Ontology Embedding Illustration]{BiOnt ontology embedding illustration based on the HPO and the GO ontologies, for the candidate relation between the human phenotype \textit{blindness} and the gene \textit{CRB1} (represented by the GO term \textit{heterophilic cell-cell adhesion via plasma membrane cell adhesion molecules}).} \label{fig6}
+\end{figure}
+
+As stated previously, our system expands the work done by \cite{lamurias2019bo} by using four types of domain-specific ontologies and combining them to extract new types of relations. Therefore, to allow this diversity of relations, we adapted the BO-LSTM model common ancestors and the concatenation of ancestors channels. Since the common ancestors' channel could only be used for relations between the same type of biomedical entities, we only use the concatenation of the ancestors' channel for the relations between different biomedical entities. 
+
+
+\section{Evaluation}
+
+To showcase our systems' performance, we used three different state-of-the-art datasets. These  represent three out of the ten possible combinations of the biomedical entities used in this work, drug-drug interactions, phenotype-gene relations, and chemical-induced disease relations. With these datasets, we intend to show the flexibility of our model to the different types of biomedical entities represented by biomedical ontologies. Figure \ref{fig31} illustrates how the entities present in the three  (\textbf{1}, \textbf{2}, and \textbf{3}) are connected to the different biomedical entities.
+
+Drug-Drug Interactions (1) The SemEval 2013: Task 9 DDI Extraction Corpus \citep{herrero2013ddi} is a corpus that describes drug-drug interactions (DDIs) focused on both pharmacokinetic (PK) and pharmacodynamic (PD) DDIs. The manually annotated corpus created by \cite{herrero2013ddi} combines 5028 DDIs, from selected texts of the DrugBank database and  Medline abstracts. 
+
+Phenotype-Gene Relations (2) The Phenotype-Gene Relations Corpus (PGR) \citep{sousa2019silver} is a corpus that describes human phenotype-gene relations, created in a fully automated manner. Due to being a silver standard corpus is not expected to be as reliable as manually annotated corpora. Nonetheless, the authors show the system's efficiency by training two state-of-the-art relation extraction deep learning systems. The PGR corpus combines 4283 human phenotype-gene relations.
+
+Chemical-Induced Disease Relations (3) The BioCreative V CDR Corpus (BC5CDR) \citep{li2016biocreative} is a corpus of chemical-induced disease (CID) relations. The BC5CDR corpus consists of 3116 chemical-disease interactions annotated from PubMed articles. To use the BC5CDR corpus, we had to preprocess the documents linking the annotations of the relations to their sentences. We assumed that if two entities share a relation in the document, they will continue to share that relation if present in the same sentence of that document. 
+
+\section{Results and Discussion}
+
+Table \ref{tab32} presents the relation extraction results of our system, BiOnt, for each dataset. For all three datasets, our system performs better using the ontological embeddings layer (+ Ontologies) than just using the word embeddings and WordNet classes layers (State-of-the-art) by an average of 0.0404. The most relevant contribution for this metric was an increase in recall for the DDI and PGR corpora and in precision for the BC5CDR corpus. The ontology embeddings contribute to the identification of more correct relations, with a small trade-off in precision, for the DDI corpus. For the other two datasets, the ontological embedding layer does not damage the precision, while more correct relations are identified.
+
+\begin{table}[h]
+\centering
+\caption[Relation Extraction Results with the BiOnt System]{Relation extraction results with the BiOnt system, for each dataset, expressing drug-drug interactions (DDI Corpus), phenotype-gene relations (PGR Corpus), and chemical-induced disease relations (BC5CDR Corpus)}\label{tab32}
+\begin{tabular}{llccc}\hline
+Dataset & Configuration & Precision & Recall & F-measure \\
+\hline
+\multirow{2}{*}{DDI Corpus} & State-of-the-art & 0.7134 & 0.6410 & 0.6753 \\
+&  + Ontologies & 0.6784 & 0.7775 & \textbf{0.7246} \\
+\hline
+\multirow{2}{*}{PGR Corpus} & State-of-the-art & 0.8421 & 0.6666 & 0.7442 \\
+& + Ontologies & 0.8438 & 0.7500 & \textbf{0.7941} \\
+\hline
+\multirow{2}{*}{BC5CDR Corpus} & State-of-the-art & 0.5371 & 0.7264 & 0.6175 \\
+& + Ontologies & 0.5770 & 0.7173 & \textbf{0.6396} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+For the DDI corpus, the BiOnt system, due to the inherent variability of the preprocessing phase (by randomizing the division between training and test sets), when compared with the BO-LSTM system, performed slightly worse (0.7246 in F-measure) than the previously reported results (0.7290 in F-measure).
+The paper supporting the PGR corpus \citep{sousa2019silver} reported some deep learning applications results, including with the BERT \citep{devlin2019bert} based BioBERT \citep{lee2020biobert} pre-trained biomedical language representation model (0.6716 in F-measure). Our system outperformed those results with an F-measure of 0.7941.
+Regarding the BC5CDR corpus, our system outperformed the best system (0.5703 in F-measure) in the challenging task chemical-induced disease (CID) relation extraction of BioCreative V, by 0.0693 \citep{inproceedingscdr}, with 0.6396 in F-measure. 
+The differences in F-measure for the distinct datasets are mostly due to how they were built and the completeness and complexity of the respective ontologies. 
+For instance, the PGR corpus is a silver standard corpus, therefore, could have entities that were poorly identified, not identified at all, or not linked to the right identifier. The BC5CDR corpus was annotated for documents, not regarding the offsets of the entities that shared a relation in each document, which is also a possible limitation.
+
+
+\section{Conclusions and Future Work}
+
+This work showed that the knowledge encoded in biomedical ontologies plays a vital part in the development of learning systems, providing semantic and ancestry information for entities such as genes, phenotypes, chemicals, and diseases. We evaluated BiOnt using three state-of-the-art datasets (DDI, PGR, and BC5CDR Corpora), obtaining improvements in F-measure (4.93, 4.99, and 2.21 percentage points, respectively) by using an ontological information layer. Our system successfully enhances the results of \cite{lamurias2019bo} to other entities and ontologies. BiOnt shows that integrating biomedical ontologies instead of relying solely on the training data for creating classification models will allow us not only to find relevant information for a particular problem quicker but possibly also to find unknown associations between biomedical entities.
+
+Regarding future work, it is possible to integrate more ontological information in different ways. For instance, one could consider only the relations between the ancestors with the highest information content (more relevant for the candidate pair they characterize). The information content could be inferred from the probability of each term in each ontology or resorting to an external dataset. Also, a semantic similarity measurement could account for non-transitive relations (within the same ontology). Relatively to biomedical concepts that do not constitute ontology entries, we could explore quantitative evidence values, choose more than one representative term, and we could also employ semantic similarity measures \citep{COUTO2019870}.
