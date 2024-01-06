@@ -1,4 +1,4 @@
-# TEMPLATES LATEX
+# TEMPLATES LATEX FCUL
 
 Add files (tese_mestrado_2019, proposta_tese_mestrado_2019, proposta_tese_doutoramento_2020, or tese_doutoramento_2023) to create a new Overleaf project for optimal performance.
 
