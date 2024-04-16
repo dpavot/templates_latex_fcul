@@ -13,6 +13,8 @@ Tese disponível no [Repositório da Universidade de Lisboa](http://hdl.handle.n
 ## Doutoramento
 
 * Template LaTeX para Tese de Doutoramento na FCUL (**ATENÇÃO**: o compilador é XeLaTeX, o TEX Live Version 2022)
+
+Tese disponível no [Repositório da Universidade de Lisboa](https://repositorio.ul.pt/handle/10451/64187).
   
 * Template LaTeX para Proposta de Tese de Doutoramento na FCUL (**ATENÇÃO**: o compilador é XeLaTeX, o TEX Live Version 2019)
 
